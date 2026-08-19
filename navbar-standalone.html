@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/fav.png">
+    <title>Navbar Standalone</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet preload" as="style">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --color-primary: #010066;
+            --color-secondary: #1F1F25;
+            --color-blue: #0b4df5;
+            --color-sky: #82b440;
+            --color-body: #5D666F;
+            --color-heading-1: #1C2539;
+            --color-title: #141416;
+            --color-heading-dark: #141416;
+            --transition: .3s;
+            --bg-dark-1: #1E1E20;
+            --color-white: #fff;
+            --color-border: #DDD8F9;
+            --border-width: 1px;
+            --radius: 10px;
+            --p-light: 300;
+            --p-regular: 400;
+            --p-medium: 500;
+            --p-semi-bold: 600;
+            --p-bold: 700;
+            --p-extra-bold: 800;
+            --p-black: 900;
+            --font-primary: "Red Hat Display", serif;
+            --font-secondary: "DM Sans", serif;
+            --font-size-b1: 16px;
+            --font-size-b2: 15px;
+            --font-size-b3: 22px;
+            --line-height-b1: 26px;
+            --line-height-b2: 26px;
+            --line-height-b3: 1.7;
+            --h1: 60px;
+            --h2: 48px;
+            --h3: 30px;
+            --h4: 26px;
+            --h5: 24px;
+            --h6: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+            font-size: 10px;
+            overflow: hidden;
+            overflow-y: auto;
+            scroll-behavior: auto !important;
+        }
+
+        body {
+            font-size: var(--font-size-b1);
+            line-height: var(--line-height-b1);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-family: "DM Sans", serif;
+            color: var(--color-body);
+            font-weight: var(--p-regular);
+            position: relative;
+            overflow-x: hidden;
+            margin: 0;
+            background: #fff;
+        }
+
+        h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+            word-break: break-word;
+            font-family: "Red Hat Display", serif;
+            line-height: 1.4074;
+            color: var(--color-heading-1);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        /* Header Top Area */
+        .header-top-area-wrapper {
+            background: #010066;
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+            .header-top-area-wrapper {
+                display: none;
+            }
+        }
+
+        @media only screen and (max-width: 767px) {
+            .header-top-area-wrapper {
+                display: none;
+            }
+        }
+
+        .header-top-area-wrapper .header-top-one-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-top-area-wrapper .header-top-one-wrapper .left {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-top-area-wrapper .header-top-one-wrapper .left .mail {
+            position: relative;
+        }
+
+        .header-top-area-wrapper .header-top-one-wrapper .left .mail::after {
+            position: absolute;
+            content: "";
+            width: 1px;
+            height: 14px;
+            background: #fff;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .header-top-area-wrapper .header-top-one-wrapper .left .mail a {
+            padding: 11px 0;
+            display: block;
+            color: #fff;
+            margin-right: 50px;
+            font-size: 14px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .header-top-area-wrapper .header-top-one-wrapper .left .mail a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 12px;
+            height: 1px;
+            width: 0%;
+            background: #fff;
+            transition: var(--transition);
+        }
+
+        .header-top-area-wrapper .header-top-one-wrapper .left .mail a i {
+            margin-right: 6px;
+        }
+
+        .header-top-area-wrapper .header-top-one-wrapper .left .mail a:hover::after {
+            width: 100%;
+        }
+
+        .header-top-area-wrapper .header-top-one-wrapper .left .working-time p {
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .header-top-area-wrapper .header-top-one-wrapper .right {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .header-top-area-wrapper .header-top-one-wrapper .right .top-nav {
+            display: flex;
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .header-top-area-wrapper .header-top-one-wrapper .right .top-nav li {
+            margin: 0;
+            margin-right: 20px;
+        }
+
+        .header-top-area-wrapper .header-top-one-wrapper .right .top-nav li a {
+            font-size: 14px;
+            transition: var(--transition);
+            position: relative;
+            padding: 11px 0;
+            display: block;
+            color: #fff;
+        }
+
+        .header-top-area-wrapper .header-top-one-wrapper .right .top-nav li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 12px;
+            height: 1px;
+            width: 0%;
+            background: #fff;
+            transition: var(--transition);
+        }
+
+        .header-top-area-wrapper .header-top-one-wrapper .right .top-nav li a:hover::after {
+            width: 100%;
+        }
+
+        .header-top-area-wrapper .header-top-one-wrapper .right .social-wrapper-one {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        /* Social Wrapper */
+        .social-wrapper-one {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .social-wrapper-one li {
+            margin: 0;
+        }
+
+        .social-wrapper-one li a {
+            color: #fff;
+            margin-right: 20px;
+            padding: 11px 0;
+        }
+
+        .social-wrapper-one li a i {
+            transition: 0.3s;
+            color: #fff;
+        }
+
+        .social-wrapper-one li a:hover i {
+            color: var(--color-sky);
+        }
+
+        .header-top-area-wrapper .social-wrapper-one::after {
+            position: absolute;
+            content: "";
+            width: 1px;
+            height: 14px;
+            left: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #fff;
+        }
+
+        /* Header Main */
+        .header-main-one-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        @media only screen and (max-width: 1199px) {
+            .header-main-one-wrapper {
+                padding: 15px 0;
+            }
+        }
+
+        @media only screen and (max-width: 575px) {
+            .header-main-one-wrapper .thumbnail a img {
+                max-width: 130px;
+            }
+        }
+
+        .header-main-one-wrapper .main-header {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-main-one-wrapper .main-header .nav-main ul {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-main-one-wrapper .main-header .button-area {
+            display: flex;
+            align-items: center;
+        }
+
+        @media only screen and (max-width: 575px) {
+            .header-main-one-wrapper .button-area .rts-btn.btn-primary {
+                display: none !important;
+            }
+        }
+
+        .header-one .nav-area {
+            margin-right: 80px;
+        }
+
+        /* Search and Menu Buttons */
+        #search,
+        #menu-btn {
+            background: #F2F2F2;
+            height: 55px;
+            min-width: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #search i,
+        #menu-btn i {
+            color: #1C2539;
+            font-size: 18px;
+        }
+
+        #search:hover,
+        #menu-btn:hover {
+            background: var(--color-primary);
+        }
+
+        #search:hover i,
+        #menu-btn:hover i {
+            color: #fff;
+        }
+
+        /* Sticky Header */
+        .header--sticky.sticky {
+            position: fixed !important;
+            top: 0;
+            display: block;
+            z-index: 999;
+            width: 100%;
+            background: #fff;
+            box-shadow: 0px 7px 18px rgba(24, 16, 16, 0.0509803922);
+        }
+
+        .header--sticky.sticky .header-top-area-wrapper {
+            display: none;
+        }
+
+        .header--sticky.sticky.header-one {
+            background: #fff;
+        }
+
+        /* Nav Area */
+        @media only screen and (max-width: 1199px) {
+            .nav-area {
+                display: none;
+            }
+        }
+
+        .nav-area ul {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        @media only screen and (min-width: 1200px) and (max-width: 1599px) {
+            .nav-area ul {
+                gap: 40px;
+            }
+        }
+
+        @media screen and (max-width: 1300px) {
+            .nav-area ul {
+                gap: 35px;
+            }
+        }
+
+        .nav-area ul li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-area ul li a {
+            color: #111032;
+            font-weight: 600 !important;
+            transition: 0.3s;
+        }
+
+        .nav-area ul li a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-area ul li.main-nav {
+            padding: 40px 0;
+            cursor: pointer;
+        }
+
+        header .main-nav > a {
+            color: #1C2539 !important;
+        }
+
+        header .nav-area ul li.main-nav:hover > a {
+            color: var(--color-primary) !important;
+        }
+
+        /* RTS Button */
+        .rts-btn {
+            font-weight: 700;
+            font-size: 16px;
+            padding: 17px 29px;
+            border-radius: 10px;
+            display: inline-block;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .rts-btn.btn-primary {
+            background: var(--color-primary);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .rts-btn.btn-primary::before {
+            content: "";
+            position: absolute;
+            transition-duration: 800ms;
+            width: 200%;
+            height: 200%;
+            top: 110%;
+            left: 50%;
+            background: #F2F2F2;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .rts-btn.btn-primary:hover {
+            background: #F2F2F2;
+            color: var(--color-primary);
+        }
+
+        .rts-btn.btn-primary:hover::before {
+            top: -40%;
+        }
+
+        /* Utility Classes */
+        .ml--20 {
+            margin-left: 20px;
+        }
+
+        .ml_sm--5 {
+            margin-left: 5px;
+        }
+
+        .mr--0 {
+            margin-right: 0 !important;
+        }
+
+        /* Side Bar */
+        .side-bar {
+            position: fixed;
+            overflow: hidden;
+            top: 0;
+            right: -100%;
+            width: 365px;
+            padding: 40px 30px;
+            padding-top: 50px;
+            height: 100%;
+            display: block;
+            background-color: white;
+            backdrop-filter: blur(7px);
+            z-index: 1900;
+            transition: all 600ms ease;
+            box-shadow: -5px 0 20px -5px rgba(149, 22, 22, 0.12);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        @media only screen and (max-width: 479px) {
+            .side-bar {
+                width: 320px;
+                box-shadow: none;
+            }
+        }
+
+        .side-bar.show {
+            right: 0;
+        }
+
+        .side-bar button {
+            max-width: max-content;
+            border: none;
+            background: transparent;
+        }
+
+        .side-bar button i {
+            color: #fff;
+            height: 50px;
+            width: 50px;
+            min-width: 50px;
+            border-radius: 5px;
+            background: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: -8px;
+            margin-top: -3px;
+        }
+
+        .rts-sidebar-menu-desktop .logo {
+            margin-top: 50px;
+        }
+
+        .rts-sidebar-menu-desktop p.disc {
+            margin-top: 30px;
+            font-size: 16px;
+            line-height: 26px;
+        }
+
+        .rts-sidebar-menu-desktop .get-in-touch .title {
+            margin-bottom: 30px;
+        }
+
+        .rts-sidebar-menu-desktop .get-in-touch .wrapper .single i {
+            color: var(--color-primary);
+            margin-right: 10px;
+            margin-bottom: 15px;
+        }
+
+        .rts-sidebar-menu-desktop .get-in-touch .wrapper .single a {
+            transition: 0.3s;
+        }
+
+        .rts-sidebar-menu-desktop .get-in-touch .wrapper .single a:hover {
+            color: var(--color-primary);
+        }
+
+        .social-wrapper-two.menu {
+            margin-top: 50px;
+            margin-left: 12px;
+            padding-left: 0;
+        }
+
+        .social-wrapper-two a {
+            margin-right: 40px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .social-wrapper-two a i {
+            color: #fff;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+
+        .social-wrapper-two a::after {
+            position: absolute;
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+            content: "";
+            z-index: -1;
+            background: var(--color-primary);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: 0.3s;
+        }
+
+        .social-wrapper-two a:hover i {
+            color: var(--color-primary);
+        }
+
+        .social-wrapper-two a:hover::after {
+            background: #ffecec;
+            box-shadow: 0px 10px 30px rgba(33, 5, 5, 0.05);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            margin-top: 30px;
+        }
+
+        .mobile-menu nav ul {
+            padding-left: 0;
+        }
+
+        .mobile-menu nav ul li {
+            margin-bottom: 15px;
+        }
+
+        .mobile-menu nav ul li a {
+            color: #1C2539;
+            font-weight: 600;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .mobile-menu nav ul li a:hover {
+            color: var(--color-primary);
+        }
+
+        .mobile-menu .social-wrapper-one {
+            margin-top: 50px;
+        }
+
+        .mobile-menu .social-wrapper-one ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .mobile-menu .social-wrapper-one ul li a {
+            color: #1C2539;
+            margin-right: 20px;
+        }
+
+        .mobile-menu .social-wrapper-one ul li a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Search Input Area */
+        .search-input-area {
+            transition: all 500ms ease;
+            visibility: hidden;
+            transform: translateY(-100%);
+            opacity: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 57px 0;
+            background: white;
+            box-shadow: 1px 1px 50px rgba(0, 0, 0, 0.46);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media only screen and (max-width: 575px) {
+            .search-input-area {
+                padding: 70px 0 30px 0;
+            }
+        }
+
+        .search-input-area.show {
+            visibility: visible;
+            transform: inherit;
+            opacity: 1;
+        }
+
+        .search-input-area .search-input-inner {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .search-input-area .search-input-inner .input-div {
+            width: 80%;
+            display: flex;
+            align-items: center;
+            margin: auto;
+        }
+
+        @media only screen and (max-width: 575px) {
+            .search-input-area .search-input-inner .input-div {
+                width: 100%;
+            }
+        }
+
+        .search-input-area .search-input-inner .input-div input {
+            background: #F7F7F7;
+            border-radius: 5px;
+            height: 55px;
+            border: 1px solid transparent;
+            padding: 0 15px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .search-input-area .search-input-inner .input-div input:focus {
+            border: 1px solid var(--color-primary);
+            outline: none;
+        }
+
+        .search-input-area .search-input-inner .input-div button {
+            max-width: max-content;
+            padding: 18px 21px;
+            background: var(--color-primary);
+            display: flex;
+            color: #fff;
+            align-items: center;
+            justify-content: center;
+            margin-left: -9px;
+            border-radius: 0 5px 5px 0;
+            border: none;
+            cursor: pointer;
+        }
+
+        .search-input-area .search-close-icon {
+            cursor: pointer;
+            position: absolute;
+            right: 38px;
+            top: 22px;
+        }
+
+        @media only screen and (max-width: 575px) {
+            .search-input-area .search-close-icon {
+                right: 20px;
+                top: 15px;
+            }
+        }
+
+        .search-input-area .search-close-icon i {
+            position: relative;
+            z-index: 1;
+            color: var(--color-primary);
+            transition: 0.3s;
+            font-size: 18px;
+        }
+
+        .search-input-area .search-close-icon i:hover {
+            color: #F7F7F7;
+        }
+
+        .search-input-area .search-close-icon i:hover::after {
+            background: var(--color-primary);
+        }
+
+        .search-input-area .search-close-icon i::after {
+            position: absolute;
+            height: 45px;
+            width: 45px;
+            content: "";
+            border-radius: 5px;
+            background: rgba(85, 60, 223, 0.0784313725);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            transition: 0.3s;
+        }
+
+        /* Anywhere Home Overlay */
+        #anywhere-home {
+            background: #0e1013;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 500ms ease-in-out;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        #anywhere-home.bgshow {
+            background: #0e1013;
+            opacity: 70%;
+            visibility: visible;
+            pointer-events: visible;
+            z-index: 999;
+            top: 0;
+        }
+
+        /* Demo content area */
+        .demo-content {
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #010066 0%, #0b4df5 100%);
+            min-height: 50vh;
+        }
+
+        .demo-content h1 {
+            color: #fff;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .demo-content p {
+            color: rgba(255,255,255,0.8);
+            font-size: 18px;
+        }
+    </style>
+    <meta name="acvl-api-url" content="https://devsitepwd.tempurl.host">
+</head>
+
+<body class="index-one onepage">
+    <!-- Header -->
+    <header class="header-one header--sticky">
+        <div class="header-top-area-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header-top-one-wrapper">
+                            <div class="left">
+                                <div class="mail">
+                                    <a href="mailto:webmaster@example.com"><i class="fal fa-envelope"></i>
+                                        support@invena.com</a>
+                                </div>
+                                <div class="working-time">
+                                    <p><i class="fal fa-clock"></i> Working: 8.00am - 5.00pm</p>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <ul class="top-nav">
+                                    <li><a href="blog-list.html">Company news</a></li>
+                                    <li><a href="faq.html">Faq</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                                <ul class="social-wrapper-one">
+                                    <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a class="mr--0" href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header-main-one-wrapper">
+                            <div class="thumbnail">
+                                <a href="index.html">
+                                    <img src="assets/images/Screenshot 2026-01-14 112856.png" alt="ACVL Logo" style="max-width: 50%; height: auto;">
+                                </a>
+                            </div>
+                            <div class="main-header">
+                                <div class="nav-area">
+                                    <ul>
+                                        <li class="main-nav mega-menu">
+                                            <a href="#about">About Us</a>
+                                        </li>
+                                        <li class="main-nav mega-menu">
+                                            <a href="#lease-terms">Lease Ad Terms</a>
+                                        </li>
+                                        <li class="main-nav">
+                                            <a href="#leasing-vs-buying">Leasing vs. Buying</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="button-area">
+                                    <button class="search" id="search"><i class="far fa-search"></i></button>
+                                    <a href="#contact"
+                                        class="rts-btn btn-primary ml--20 ml_sm--5 header-one-btn quote-btn">Reach
+                                        Out</a>
+                                    <button id="menu-btn" class="menu-btn menu ml--20 ml_sm--5">
+                                        <img class="menu-light" src="assets/images/icons/01.svg" alt="Menu-icon">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Side Bar Menu -->
+    <div id="side-bar" class="side-bar header-two">
+        <button class="close-icon-menu"><i class="far fa-times"></i></button>
+        <!-- inner menu area desktop start -->
+        <div class="rts-sidebar-menu-desktop">
+            <div class="body d-none d-xl-block">
+                <p class="disc">
+                    We must explain to you how all seds this mistakens idea denouncing pleasures and praising account.
+                    All seds this mistakens idea denouncing pleasures.
+                </p>
+                <div class="get-in-touch">
+                    <!-- title -->
+                    <div class="h6 title">Get In Touch</div>
+                    <!-- title End -->
+                    <div class="wrapper">
+                        <!-- single -->
+                        <div class="single">
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="#">+8801234566789</a>
+                        </div>
+                        <!-- single ENd -->
+                        <!-- single -->
+                        <div class="single">
+                            <i class="fas fa-envelope"></i>
+                            <a href="#">example@gmail.com</a>
+                        </div>
+                        <!-- single ENd -->
+                        <!-- single -->
+                        <div class="single">
+                            <i class="fas fa-globe"></i>
+                            <a href="#">www.webexample.com</a>
+                        </div>
+                        <!-- single ENd -->
+                        <!-- single -->
+                        <div class="single">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <a href="#">13/A, New Pro State, NYC</a>
+                        </div>
+                        <!-- single ENd -->
+                    </div>
+                    <div class="social-wrapper-two menu">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- mobile menu area start -->
+        <div class="mobile-menu d-block d-xl-none">
+            <nav class="nav-main mainmenu-nav mt--30">
+                <ul class="mainmenu metismenu" id="mobile-menu-active">
+                    <li class="main-nav mega-menu">
+                        <a class="main" href="#about">About Us</a>
+                    </li>
+                    <li class="main-nav mega-menu">
+                        <a class="main" href="#lease-terms">Lease Ad Terms</a>
+                    </li>
+                    <li class="main-nav">
+                        <a class="main" href="#leasing-vs-buying">Leasing vs. Buying</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="social-wrapper-one">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- mobile menu area end -->
+    </div>
+
+    <!-- Search Input Area -->
+    <div class="search-input-area">
+        <div class="container">
+            <div class="search-input-inner">
+                <div class="input-div">
+                    <input class="search-input autocomplete" type="text" placeholder="Search by keyword or #">
+                    <button><i class="far fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+        <div id="close" class="search-close-icon"><i class="far fa-times"></i></div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="anywhere-home" class=""></div>
+
+    <!-- Demo Content to show navbar functionality -->
+    <div class="demo-content" id="about">
+        <h1>Navbar Standalone Demo</h1>
+        <p>Scroll down to see the sticky header in action. Click the menu button to see the side menu.</p>
+    </div>
+
+    <div style="height: 1000px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+        <p style="font-size: 24px; color: #666;">Scroll area for sticky header demo</p>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        (function ($) {
+            'use strict';
+
+            // Sticky Header
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 150) {
+                    $('.header--sticky').addClass('sticky')
+                } else {
+                    $('.header--sticky').removeClass('sticky')
+                }
+            });
+
+            // Side Menu
+            $(document).on('click', '.menu-btn', function () {
+                $("#side-bar").addClass("show");
+                $("#anywhere-home").addClass("bgshow");
+            });
+
+            $(document).on('click', '.close-icon-menu', function () {
+                $("#side-bar").removeClass("show");
+                $("#anywhere-home").removeClass("bgshow");
+            });
+
+            $(document).on('click', '#anywhere-home', function () {
+                $("#side-bar").removeClass("show");
+                $("#anywhere-home").removeClass("bgshow");
+            });
+
+            $(document).on('click', '.onepage .mainmenu li a', function () {
+                $("#side-bar").removeClass("show");
+                $("#anywhere-home").removeClass("bgshow");
+            });
+
+            // Search Option
+            $(document).on('click', '.search', function () {
+                $(".search-input-area").addClass("show");
+                $("#anywhere-home").addClass("bgshow");
+            });
+
+            $(document).on('click', '#close', function () {
+                $(".search-input-area").removeClass("show");
+                $("#anywhere-home").removeClass("bgshow");
+            });
+
+            $(document).on('click', '#anywhere-home', function () {
+                $(".search-input-area").removeClass("show");
+                $("#anywhere-home").removeClass("bgshow");
+            });
+
+            // Smooth Scroll for one page navigation
+            $(document).on('click', '.onepage a[href^="#"]', function (event) {
+                event.preventDefault();
+                var target = $($.attr(this, 'href'));
+                if (target.length) {
+                    $('html, body').animate({
+                        scrollTop: target.offset().top
+                    }, 300);
+                }
+            });
+
+        })(jQuery);
+    </script>
+    <script src="acvl-headless-cms/frontend/acvl-content-loader.js" defer></script>
+</body>
+
+</html>

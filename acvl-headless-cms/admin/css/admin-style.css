@@ -1,0 +1,25 @@
+/* ACVL Admin Styles */
+.acvl-settings-wrap {
+    max-width: 900px;
+}
+
+.acvl-settings-wrap h2.title {
+    margin-top: 30px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #010066;
+    color: #010066;
+}
+
+.acvl-settings-wrap .form-table th {
+    width: 200px;
+}
+
+.acvl-settings-wrap .submit .button-primary {
+    background: #010066;
+    border-color: #010066;
+}
+
+.acvl-settings-wrap .submit .button-primary:hover {
+    background: #0b4df5;
+    border-color: #0b4df5;
+}

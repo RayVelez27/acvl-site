@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/fav.png">
+    <title>Association of Consumer Vehicle Lessors</title>
+    <link rel="stylesheet" href="assets/css/plugins/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/plugins/swiper.css">
+    <link rel="stylesheet" href="assets/css/plugins/metismenu.css">
+    <link rel="stylesheet" href="assets/css/plugins/magnifying-popup.css">
+    <link rel="stylesheet" href="assets/css/plugins/odometer.css">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet preload" as="style">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <style>
+        /* Global Button Override */
+        .rts-btn {
+            border-radius: 15px !important;
+        }
+
+        /* Square Image Overrides */
+        .thumbnail-about-1 {
+            border-radius: 15px !important;
+        }
+        .consultancy-thumbnail-area .large-image {
+            border-radius: 15px !important;
+        }
+
+        /* Platinum Sponsor Premium Styles */
+        .platinum-sponsor {
+            position: relative;
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15), 0 5px 20px rgba(229,228,226,0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+
+        /* Animated gradient border */
+        .platinum-sponsor::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, #E5E4E2, #B8B8B8, #E5E4E2, #D4D4D4, #E5E4E2);
+            background-size: 400% 400%;
+            border-radius: 17px;
+            z-index: -1;
+            animation: gradientBorder 3s ease infinite;
+        }
+
+        /* Shimmer effect overlay */
+        .platinum-sponsor::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes gradientBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+
+        /* Hover effects */
+        .platinum-sponsor:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2), 0 10px 30px rgba(229,228,226,0.5);
+        }
+
+        /* Platinum badge */
+        .platinum-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: linear-gradient(135deg, #E5E4E2, #B8B8B8);
+            color: #1a1a2e;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 5px 10px;
+            border-radius: 0 15px 0 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .platinum-sponsor img {
+            position: relative;
+            z-index: 1;
+            height: 60px;
+            width: auto;
+        }
+
+        /* Mission Statement Blue Section */
+        .mission-blue-section {
+            background: #010066;
+            padding: 80px 0 180px 0;
+        }
+        .mission-blue-section .title-style-one .pre {
+            color: rgba(255,255,255,0.8);
+        }
+        .mission-blue-section .title-style-one .title {
+            color: #fff;
+        }
+        .mission-blue-section .sticky-statement {
+            background: linear-gradient(135deg, #1c76d2, #010066) !important;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .mission-blue-section .sticky-statement .title {
+            color: #fff;
+        }
+        .mission-blue-section .sticky-statement .disc {
+            color: rgba(255,255,255,0.9);
+        }
+        .mission-blue-section .sticky-statement .icon {
+            background: rgba(255,255,255,0.15);
+        }
+        .mission-blue-section .sticky-statement .icon img {
+            filter: brightness(0) invert(1);
+        }
+
+        /* Sponsor Carousel Styles */
+        .sponsor-carousel-section {
+            position: relative;
+            padding: 15px 35px 0;
+        }
+        .sponsor-carousel-section .owl-item {
+            background: #fff;
+            padding: 15px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 90px;
+        }
+        .sponsor-carousel-section .owl-item img {
+            max-height: 60px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        .sponsor-carousel-section .owl-nav button {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 35px;
+            height: 35px;
+            background: #fff !important;
+            border-radius: 50%;
+            margin: auto 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+            font-size: 18px !important;
+            color: #010066 !important;
+            line-height: 35px;
+        }
+        .sponsor-carousel-section .owl-nav button.owl-next {
+            right: 0;
+        }
+        .sponsor-carousel-section .owl-nav button.owl-prev {
+            left: 0;
+        }
+        .sponsor-carousel-section .owl-dots {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .sponsor-carousel-section .owl-dots .owl-dot span {
+            background: #ccc;
+        }
+        .sponsor-carousel-section .owl-dots .owl-dot.active span {
+            background: var(--color-primary);
+        }
+        .sponsor-carousel-platinum .owl-item {
+            border: 2px solid #E5E4E2;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+        .sponsor-carousel-platinum .owl-item img {
+            max-height: 60px;
+        }
+        .sponsor-carousel-gold .owl-item {
+            border: 2px solid #FFD700;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.06);
+        }
+        .sponsor-carousel-gold .owl-item img {
+            max-height: 50px;
+        }
+        .sponsor-carousel-silver .owl-item {
+            border: 2px solid #C0C0C0;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.04);
+        }
+        .sponsor-carousel-silver .owl-item img {
+            max-height: 40px;
+        }
+
+        /* Hero Members Carousel */
+        .mySwiper-hero-members .swiper-slide {
+            width: auto !important;
+        }
+        .hero-member-name {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50px;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+        .hero-member-name:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+        .mySwiper-hero-members .swiper-wrapper {
+            transition-timing-function: linear !important;
+        }
+    </style>
+    <meta name="acvl-api-url" content="https://devsitepwd.tempurl.host">
+</head>
+
+<body class="index-one onepage">
+    <div class="loader-wrapper">
+        <div class="loader">
+        </div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+    <header class="header-one header--sticky">
+        <div class="header-top-area-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header-top-one-wrapper">
+                            <div class="left">
+                                <div class="mail">
+                                    <a href="mailto:helloacvl@gmail.com"><i class="fal fa-envelope"></i>
+                                        helloacvl@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <ul class="top-nav">
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                                <ul class="social-wrapper-one">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header-main-one-wrapper">
+                            <div class="thumbnail">
+                                <a href="index.html">
+                                    <img src="assets/images/unnamed (2).png" alt="ACVL Logo" style="max-width: 100%; height: auto; margin-left: -15px;">
+                                </a>
+                            </div>
+                            <div class="main-header">
+                                <div class="nav-area">
+                                    <ul>
+                                        <li class="main-nav has-dropdown">
+                                            <a href="#">About</a>
+                                            <ul class="submenu">
+                                                <li><a href="mission.html">Mission Statement</a></li>
+                                                <li><a href="board.html">Board/Leadership</a></li>
+                                                <li><a href="committee.html">Committee Chairs</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="main-nav has-dropdown">
+                                            <a href="#">Members</a>
+                                            <ul class="submenu">
+                                                <li><a href="member-companies.html">List of Member Companies</a></li>
+                                                <li><a href="#member-benefits">Member Benefits</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="main-nav has-dropdown">
+                                            <a href="#">Sponsors</a>
+                                            <ul class="submenu">
+                                                <li><a href="sponsors.html">Sponsors</a></li>
+                                                <li><a href="advisors.html">Advisors</a></li>
+                                                <li><a href="why-sponsor.html">Why Sponsor Us</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="main-nav">
+                                            <a href="events.html">Events</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="button-area">
+                                    <a href="contact.html"
+                                        class="rts-btn btn-primary ml--20 ml_sm--5 header-one-btn quote-btn">Contact Us</a>
+                                    <button id="menu-btn" class="menu-btn menu ml--20 ml_sm--5">
+                                        <img class="menu-light" src="assets/images/icons/01.svg" alt="Menu-icon">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- rts banner area start -->
+    <div class="rts-banner-area banner-style-one bg_image" id="home" style="display: flex; align-items: center; justify-content: center;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="banner-one-inner text-center" style="color: #fff; width: 100%; margin: 0 auto;">
+
+                        <h1 class="title rts-text-anime-style-1" style="color: #fff;">
+                            Association of Consumer <br>Vehicle Lessors
+                        </h1>
+                        <p class="disc banner-para" style="color: #fff; max-width: 800px; margin: 0 auto 30px auto;">
+                            The Association of Consumer Vehicle Lessors is the national association representing members that are the nation's largest consumer vehicle lessors, including captive and non-captive finance companies, banks, credit unions and leasing companies.
+                        </p>
+                        <!-- Members carousel in hero -->
+                        <div>
+                            <p class="disc banner-para" style="color: #fff; max-width: 800px; margin: 0 auto 20px auto;">Our members currently originate most of the consumer vehicle leases in the country</p>
+                            <div class="swiper mySwiper-hero-members" dir="ltr" style="max-width: 900px; margin: 0 auto;">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><span class="hero-member-name">Ally</span></div>
+                                    <div class="swiper-slide"><span class="hero-member-name">American Honda Finance</span></div>
+                                    <div class="swiper-slide"><span class="hero-member-name">Bank of America</span></div>
+                                    <div class="swiper-slide"><span class="hero-member-name">BMW Financial Services</span></div>
+                                    <div class="swiper-slide"><span class="hero-member-name">Credit Union Leasing of America</span></div>
+                                    <div class="swiper-slide"><span class="hero-member-name">GM Financial</span></div>
+                                    <div class="swiper-slide"><span class="hero-member-name">Hyundai Capital America</span></div>
+                                    <div class="swiper-slide"><span class="hero-member-name">Mercedes-Benz Financial Services</span></div>
+                                    <div class="swiper-slide"><span class="hero-member-name">Nissan North America</span></div>
+                                    <div class="swiper-slide"><span class="hero-member-name">Porsche Financial Services</span></div>
+                                    <div class="swiper-slide"><span class="hero-member-name">Southeast Toyota Finance</span></div>
+                                    <div class="swiper-slide"><span class="hero-member-name">Stellantis Financial Services</span></div>
+                                    <div class="swiper-slide"><span class="hero-member-name">Toyota Financial Services</span></div>
+                                    <div class="swiper-slide"><span class="hero-member-name">US Bank</span></div>
+                                    <div class="swiper-slide"><span class="hero-member-name">Volvo Car Financial Services US LLC</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- rts banner area end -->
+
+    <!-- Hero Members Carousel Init -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Swiper(".mySwiper-hero-members", {
+                slidesPerView: 4,
+                spaceBetween: 15,
+                loop: true,
+                speed: 3000,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                },
+                freeMode: true,
+                freeModeMomentum: false,
+                breakpoints: {
+                    1200: { slidesPerView: 4 },
+                    992:  { slidesPerView: 3 },
+                    768:  { slidesPerView: 3 },
+                    480:  { slidesPerView: 2 },
+                    0:    { slidesPerView: 2 },
+                },
+            });
+        });
+    </script>
+
+    <!-- Who We Are area start -->
+    <div class="rts-about-area rts-section-gap" id="who-we-are">
+        <div class="container">
+            <!-- Our Mission -->
+            <div class="row mb--80">
+                <div class="col-lg-12">
+                    <div style="background: #010066; padding: 40px; border-radius: 20px; text-align: center;">
+                        <div style="margin-bottom: 25px;">
+                            <i class="fas fa-bullseye" style="font-size: 50px; color: #fff;"></i>
+                        </div>
+                        <h3 style="color: #fff; font-size: 32px; margin-bottom: 25px;">Our Mission</h3>
+                        <p style="color: rgba(255,255,255,0.9); font-size: 20px; line-height: 1.8; max-width: 900px; margin: 0 auto;">
+                            To promote high standards in vehicle leasing and to keep members well-informed on trends, changes, and key issues in the leasing industry with high expertise and integrity.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Features -->
+            <div class="row g-5">
+                <!-- Expert Network -->
+                <div class="col-lg-4 col-md-6">
+                    <div style="background: #f8f9fa; padding: 40px 30px; border-radius: 15px; height: 100%; border-left: 4px solid var(--color-primary);">
+                        <div style="margin-bottom: 20px;">
+                            <i class="fas fa-users" style="font-size: 40px; color: var(--color-primary);"></i>
+                        </div>
+                        <h4 style="color: var(--color-heading-1); margin-bottom: 15px;">Expert Network</h4>
+                        <p class="disc" style="margin: 0;">
+                            Includes leasing professionals who serve as board members, committee chairs and industry expert sponsors, advisors and speakers.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Focus Topics -->
+                <div class="col-lg-4 col-md-6">
+                    <div style="background: #f8f9fa; padding: 40px 30px; border-radius: 15px; height: 100%; border-left: 4px solid var(--color-primary);">
+                        <div style="margin-bottom: 20px;">
+                            <i class="fas fa-chart-line" style="font-size: 40px; color: var(--color-primary);"></i>
+                        </div>
+                        <h4 style="color: var(--color-heading-1); margin-bottom: 15px;">Focus Topics</h4>
+                        <p class="disc" style="margin: 0;">
+                            Economic trends, used vehicle market, regulations, legal and tax matters, and industry risks.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Member Engagement -->
+                <div class="col-lg-4 col-md-6">
+                    <div style="background: #f8f9fa; padding: 40px 30px; border-radius: 15px; height: 100%; border-left: 4px solid var(--color-primary);">
+                        <div style="margin-bottom: 20px;">
+                            <i class="fas fa-handshake" style="font-size: 40px; color: var(--color-primary);"></i>
+                        </div>
+                        <h4 style="color: var(--color-heading-1); margin-bottom: 15px;">Member Engagement</h4>
+                        <p class="disc" style="margin: 0;">
+                            Monthly committee meetings, webinars, and in-person conferences as forums for collaboration and learning.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Who We Are area end -->
+
+    <!-- rts-about area start -->
+    <div class="rts-about-area bg-main" id="about" style="padding: 60px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <div class="about-content-left-one">
+                        <div class="title-style-one left">
+                            <span class="pre" style="color: rgba(255,255,255,0.8);">Industry Events</span>
+                            <h2 class="title rts-text-anime-style-1" style="color: #fff;">ACVL Events & <br>
+                                Conferences
+                            </h2>
+                        </div>
+                        <p class="disc" style="color: rgba(255,255,255,0.9);">
+                            ACVL hosts a variety of events throughout the year designed to bring together industry leaders, stakeholders, and professionals in the consumer vehicle leasing space. Our gatherings provide valuable opportunities for networking, knowledge sharing, and professional development.
+                        </p>
+                        <p class="disc" style="color: rgba(255,255,255,0.9);">
+                            From annual conferences to specialized workshops and committee meetings, ACVL events address the current challenges facing the industry including tax, operations, legal, and residual risk management. Nationally renowned speakers share insights on leasing trends and forecast changes that may impact the business. Join fellow professionals to learn the latest innovations in auto leasing and connect with colleagues from across the country.
+                        </p>
+                        <a href="events.html" class="rts-btn btn-primary" style="background: #fff; color: #010066;">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-7 pl--70">
+                    <div class="thumbnail-about-and-progress-1">
+
+                        <div class="thumbnail-about-1">
+                            <img src="assets/images/Untitled design - 2026-03-27T080138.351.png" alt="ACVL Conference" style="border-radius: 15px !important; width: 100%; aspect-ratio: 1/1; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- rts-about area end -->
+
+    <!-- membership benefits area start -->
+    <div class="working-process-one" id="member-benefits" style="background: #010066; padding: 60px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-style-one center">
+                        <span class="pre" style="color: rgba(255,255,255,0.8);">Join ACVL</span>
+                        <h2 class="title rts-text-anime-style-1" style="color: #fff;">Membership Benefits
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-5 mt--30">
+                <div class="col-lg-12">
+                    <div class="working-process-main-wrapper">
+                        <div class="single-working-process-one" data-animation="fadeInUp" data-delay="0.2"
+                            data-duration="1.2">
+                            <div class="left">
+                                <div class="icon" style="background: rgba(255,255,255,0.15);">
+                                    <img src="assets/images/process/icon/01.svg" alt="benefit" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                            <div class="inner-content">
+                                <h5 class="title" style="color: #fff;">Industry Networking</h5>
+                                <p class="disc" style="color: rgba(255,255,255,0.9);">
+                                    Connect with leading professionals and companies
+                                    in the consumer vehicle leasing industry.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="single-working-process-one" data-animation="fadeInUp" data-delay="0.2"
+                            data-duration="1.2">
+                            <div class="left">
+                                <div class="icon" style="background: rgba(255,255,255,0.15);">
+                                    <img src="assets/images/process/icon/02.svg" alt="benefit" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                            <div class="inner-content">
+                                <h5 class="title" style="color: #fff;">Expert Resources</h5>
+                                <p class="disc" style="color: rgba(255,255,255,0.9);">
+                                    Access exclusive insights on tax, operations, legal,
+                                    and residual risk management from industry experts.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="single-working-process-one" data-animation="fadeInUp" data-delay="0.2"
+                            data-duration="1.2">
+                            <div class="left">
+                                <div class="icon" style="background: rgba(255,255,255,0.15);">
+                                    <img src="assets/images/process/icon/03.svg" alt="benefit" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                            <div class="inner-content">
+                                <h5 class="title" style="color: #fff;">Event Access</h5>
+                                <p class="disc" style="color: rgba(255,255,255,0.9);">
+                                    Participate in conferences, workshops, and committee
+                                    meetings featuring renowned speakers and industry leaders.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- understanding leasing areas end -->
+
+
+    <!-- sponsors area start -->
+    <style>
+        @keyframes acvlBgZoom {
+            0%   { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+        @keyframes acvlIntroReveal {
+            0%   { opacity: 0; transform: translateY(30px); letter-spacing: 14px; }
+            100% { opacity: 1; transform: translateY(0);   letter-spacing: 2px; }
+        }
+        @keyframes acvlUnderline {
+            0%   { width: 0;  opacity: 0; }
+            100% { width: 90px; opacity: 1; }
+        }
+        @keyframes acvlImgReveal {
+            0%   { opacity: 0; transform: translateY(45px) scale(.95); }
+            100% { opacity: 1; transform: translateY(0)    scale(1); }
+        }
+        .acvl-intro { position: relative; overflow: hidden; border-radius: 15px; padding: 90px 0; }
+        .acvl-intro-bg {
+            position: absolute; inset: 0;
+            background: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&q=80') center center / cover no-repeat;
+            animation: acvlBgZoom 20s ease-in-out infinite alternate;
+            will-change: transform;
+        }
+        .acvl-intro-overlay { position: absolute; inset: 0; background: rgba(1, 0, 102, 0.6); }
+        .acvl-intro h2 {
+            position: relative; z-index: 1; margin: 0; color: #fff; font-size: 48px;
+            font-weight: 700; letter-spacing: 2px; text-align: center;
+            animation: acvlIntroReveal 1.2s cubic-bezier(.22,1,.36,1) both;
+        }
+        .acvl-intro .acvl-underline {
+            position: relative; z-index: 1; display: block; height: 4px; width: 90px;
+            margin: 22px auto 0; border-radius: 4px; background: #fff;
+            animation: acvlUnderline 1s cubic-bezier(.22,1,.36,1) .5s both;
+        }
+        .acvl-sponsor-frame {
+            display: inline-block; width: 100%; max-width: 1150px; margin: 0 auto;
+            padding: 32px; background: #fff; border-radius: 18px;
+            box-shadow: 0 22px 55px rgba(1,0,102,.14);
+            animation: acvlImgReveal 1.1s cubic-bezier(.22,1,.36,1) .35s both;
+            transition: transform .5s ease, box-shadow .5s ease;
+            will-change: transform;
+        }
+        .acvl-sponsor-frame:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 34px 75px rgba(1,0,102,.24);
+        }
+        .acvl-sponsor-frame img { width: 100%; height: auto; display: block; border-radius: 8px; }
+        @media (prefers-reduced-motion: reduce) {
+            .acvl-intro-bg, .acvl-intro h2, .acvl-intro .acvl-underline, .acvl-sponsor-frame { animation: none !important; }
+        }
+    </style>
+    <div class="rts-sponsors-area rts-section-gap" id="sponsors">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mb--40">
+                    <div class="acvl-intro">
+                        <div class="acvl-intro-bg"></div>
+                        <div class="acvl-intro-overlay"></div>
+                        <h2>2025/2026 Sponsors</h2>
+                        <span class="acvl-underline"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 text-center">
+                    <div class="acvl-sponsor-frame">
+                        <img src="assets/images/acvl-sponsors-2025-2026.png" alt="2025/2026 Sponsors">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- sponsors area end -->
+
+    <!-- member portal cta area start -->
+    <div class="rts-cta-area-one" style="padding-bottom: 40px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="cta-main-area-wrapper-one bg_image">
+                        <div class="left-areas">
+                            <span class="pre">Interested in becoming a sponsor?</span>
+                            <h5 class="title" style="font-size: 20px;"><a href="mailto:HelloACVL@gmail.com" style="color: #fff; text-decoration: underline;">HelloACVL@gmail.com</a></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- member portal cta area end -->
+
+    <!-- rts fun facts area start -->
+    <div class="rts-fun-facts-area" style="padding: 40px 0;">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4" data-animation="fadeInUp" data-delay="0.2" data-duration="1.2">
+                    <div class="signle-fun-facts-one">
+                        <div class="icon">
+                            <img src="assets/images/fun-facts/01.svg" alt="fun-facts">
+                        </div>
+                        <h2 class="counter title"><span class="odometer" data-count="1240">00</span>+
+                        </h2>
+                        <span class="bototm">Business Solutions</span>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-animation="fadeInUp" data-delay="0.4" data-duration="1.2">
+                    <div class="signle-fun-facts-one">
+                        <div class="icon">
+                            <img src="assets/images/fun-facts/02.svg" alt="fun-facts">
+                        </div>
+                        <h2 class="counter title"><span class="odometer" data-count="625">00</span>
+                        </h2>
+                        <span class="bototm">Members</span>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-animation="fadeInUp" data-delay="0.6" data-duration="1.2">
+                    <div class="signle-fun-facts-one">
+                        <div class="icon">
+                            <img src="assets/images/fun-facts/03.svg" alt="fun-facts">
+                        </div>
+                        <h2 class="counter title"><span class="odometer" data-count="110">00</span>
+                        </h2>
+                        <span class="bototm">Industry Experts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- rts fun facts area end -->
+
+    <!-- appoinment areas tart -->
+    <div class="appoinment-area-start rts-section-gapBottom" id="contact">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="appoinment-wrapper-one-start">
+                        <div class="title-style-two mb--40 left">
+                            <span class="bg-content">Hello</span>
+                            <span class="pre">Get In Touch</span>
+                            <h2 class="title">Questions?</h2>
+                        </div>
+                        <form action="#">
+                            <div class="single-input-wrapper">
+                                <div class="single-input">
+                                    <input type="text" placeholder="Your Name">
+                                </div>
+                                <div class="single-input">
+                                    <input type="email" placeholder="Your Email">
+                                </div>
+                            </div>
+                            <div class="single-input">
+                                <input type="text" placeholder="Subject">
+                            </div>
+                            <div class="single-input mb--30">
+                                <textarea placeholder="Your Message"></textarea>
+                            </div>
+                            <button class="rts-btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="appoinment-thumbnail">
+                        <img src="assets/images/photo-1568605117036-5fe5e7bab0b7.jpg" alt="Vehicle Leasing" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- appoinment areas end -->
+
+    <div class="rts-footer-area pt--100 pb--100 pt_sm--50 pb_sm--40 footer-two footer-bg-two">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="footer-two-single-wized left">
+                        <h3 class="title animated fadeIn">
+                            <span>Ready To</span> <br>
+                            Work With Us?
+                        </h3>
+                        <p class="disc">
+                            Join the leading trade association for consumer vehicle lessors.
+                        </p>
+                        <a class="rts-btn btn-primary" href="#contact">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 mt_sm--50">
+                    <div class="footer-two-single-wized two">
+                        <div class="wized-title-area">
+                            <h5 class="wized-title">Quick Links</h5>
+                            <img src="assets/images/footer/01.png" alt="ACVL_Footer">
+                        </div>
+                        <div class="wized-2-body">
+                            <ul>
+                                <li><a href="index.html"><i class="fal fa-chevron-double-right"></i>Home</a></li>
+                                <li><a href="mission.html"><i class="fal fa-chevron-double-right"></i>Mission</a></li>
+                                <li><a href="board.html"><i class="fal fa-chevron-double-right"></i>Board of Directors</a></li>
+                                <li><a href="committee.html"><i class="fal fa-chevron-double-right"></i>Committee Chairs</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12 mt_sm--30 mt_md--30">
+                    <div class="footer-two-single-wized">
+                        <div class="wized-title-area">
+                            <h5 class="wized-title">Contact Us</h5>
+                            <img src="assets/images/footer/01.png" alt="ACVL_Footer">
+                        </div>
+                        <div class="wized-2-body">
+                            <div class="contact-info-1">
+                                <div class="icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="disc">
+                                    <span>Email Us</span>
+                                    <a href="mailto:HelloACVL@gmail.com">HelloACVL@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-info-1">
+                                <div class="icon">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <div class="disc">
+                                    <span>Website</span>
+                                    <a href="#">www.acvlonline.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="rts-copy-right-1 ptb--10">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="copyright-h-2-wrapper">
+                        <p class="disc">
+                            ACVL - Copyright
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script>. All rights reserved.
+                        </p>
+                        <div class="right">
+                            <ul>
+                                <li><a href="#contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="side-bar" class="side-bar header-two">
+        <button class="close-icon-menu"><i class="far fa-times"></i></button>
+        <!-- inner menu area desktop start -->
+        <div class="rts-sidebar-menu-desktop">
+            <div class="body d-none d-xl-block">
+                <p class="disc">
+                    The Association of Consumer Vehicle Lessors is the trade association of major retail automobile lessors promoting high ethical standards and public confidence in consumer vehicle leasing.
+                </p>
+                <div class="get-in-touch">
+                    <!-- title -->
+                    <div class="h6 title">Get In Touch</div>
+                    <!-- title End -->
+                    <div class="wrapper">
+                        <!-- single -->
+                        <div class="single">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:HelloACVL@gmail.com">HelloACVL@gmail.com</a>
+                        </div>
+                        <!-- single ENd -->
+                        <!-- single -->
+                        <div class="single">
+                            <i class="fas fa-globe"></i>
+                            <a href="#">www.acvlonline.com</a>
+                        </div>
+                        <!-- single ENd -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- mobile menu area start -->
+        <div class="mobile-menu d-block d-xl-none">
+            <nav class="nav-main mainmenu-nav mt--30">
+                <ul class="mainmenu metismenu" id="mobile-menu-active">
+                    <li class="has-droupdown">
+                        <a class="main" href="#">About</a>
+                        <ul class="submenu mm-collapse">
+                            <li><a href="mission.html">Mission Statement</a></li>
+                            <li><a href="board.html">Board/Leadership</a></li>
+                            <li><a href="committee.html">Committee Chairs</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-droupdown">
+                        <a class="main" href="#">Members</a>
+                        <ul class="submenu mm-collapse">
+                            <li><a href="member-companies.html">List of Member Companies</a></li>
+                            <li><a href="#member-benefits">Member Benefits</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-droupdown">
+                        <a class="main" href="#">Sponsors</a>
+                        <ul class="submenu mm-collapse">
+                            <li><a href="sponsors.html">Sponsors</a></li>
+                            <li><a href="advisors.html">Advisors</a></li>
+                            <li><a href="why-sponsor.html">Why Sponsor Us</a></li>
+                        </ul>
+                    </li>
+                    <li class="main-nav">
+                        <a class="main" href="events.html">Events</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="social-wrapper-one">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- mobile menu area end -->
+    </div>
+    <!-- inner menu area desktop End -->
+
+
+    <!-- offcanvase search -->
+    <div class="search-input-area">
+        <div class="container">
+            <div class="search-input-inner">
+                <div class="input-div">
+                    <input class="search-input autocomplete" type="text" placeholder="Search by keyword or #">
+                    <button><i class="far fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+        <div id="close" class="search-close-icon"><i class="far fa-times"></i></div>
+    </div>
+    <div id="anywhere-home" class="">
+    </div>
+    <!-- progress area start -->
+    <div class="progress-wrap">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+                style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
+            </path>
+        </svg>
+    </div>
+    <!-- progress area end -->
+
+    <script src="assets/js/plugins/jquery.js"></script>
+
+
+
+    <script src="assets/js/plugins/odometer.js"></script>
+    <script src="assets/js/plugins/jquery-appear.js"></script>
+
+
+    <script src="assets/js/plugins/gsap.js"></script>
+    <script src="assets/js/plugins/split-text.js"></script>
+    <script src="assets/js/plugins/scroll-trigger.js"></script>
+    <script src="assets/js/plugins/smooth-scroll.js"></script>
+    <script src="assets/js/plugins/metismenu.js"></script>
+
+    <script src="https://html.themewant.com/golfy/assets/js/plugins/magnific-popup.js"></script>
+
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/plugins/swiper.js"></script>
+
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Platinum Sponsors Carousel
+            $('.sponsor-platinum-slider').owlCarousel({
+                loop: true,
+                margin: 25,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                responsiveClass: true,
+                responsive: {
+                    0: { items: 1, nav: true },
+                    600: { items: 2, nav: false },
+                    1000: { items: 3, nav: true }
+                }
+            });
+
+            // Gold Sponsors Carousel
+            $('.sponsor-gold-slider').owlCarousel({
+                loop: true,
+                margin: 20,
+                autoplay: true,
+                autoplayTimeout: 3500,
+                autoplayHoverPause: true,
+                responsiveClass: true,
+                responsive: {
+                    0: { items: 1, nav: true },
+                    600: { items: 2, nav: false },
+                    1000: { items: 3, nav: true }
+                }
+            });
+
+            // Silver Sponsors Carousel
+            $('.sponsor-silver-slider').owlCarousel({
+                loop: true,
+                margin: 20,
+                autoplay: true,
+                autoplayTimeout: 4000,
+                autoplayHoverPause: true,
+                responsiveClass: true,
+                responsive: {
+                    0: { items: 1, nav: true },
+                    600: { items: 2, nav: false },
+                    1000: { items: 3, nav: true }
+                }
+            });
+        });
+    </script>
+    <script src="acvl-headless-cms/frontend/acvl-content-loader.js" defer></script>
+</body>
+
+</html>

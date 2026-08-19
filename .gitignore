@@ -1,0 +1,8 @@
+# Editor / tooling local state
+.claude/
+tmpclaude-*-cwd
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini

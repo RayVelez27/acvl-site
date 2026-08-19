@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/fav.png">
+    <title>Member Portal - ACVL</title>
+    <link rel="stylesheet" href="assets/css/plugins/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/plugins/swiper.css">
+    <link rel="stylesheet" href="assets/css/plugins/metismenu.css">
+    <link rel="stylesheet" href="assets/css/plugins/magnifying-popup.css">
+    <link rel="stylesheet" href="assets/css/plugins/odometer.css">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet preload" as="style">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .portal-sidebar {
+            background: #010066;
+            border-radius: 15px;
+            padding: 30px 20px;
+            position: sticky;
+            top: 120px;
+        }
+        .portal-sidebar .member-info {
+            text-align: center;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            margin-bottom: 25px;
+        }
+        .portal-sidebar .member-info .avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0b4df5, #1c76d2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 28px;
+            color: #fff;
+            font-weight: 700;
+        }
+        .portal-sidebar .member-info h5 {
+            color: #fff;
+            margin-bottom: 4px;
+            font-size: 16px;
+        }
+        .portal-sidebar .member-info span {
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+        }
+        .portal-sidebar .nav-item {
+            margin-bottom: 4px;
+        }
+        .portal-sidebar .nav-link {
+            color: rgba(255,255,255,0.7);
+            padding: 12px 16px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        .portal-sidebar .nav-link:hover,
+        .portal-sidebar .nav-link.active {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+        .portal-sidebar .nav-link i {
+            width: 20px;
+            text-align: center;
+            font-size: 15px;
+        }
+        .portal-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+            height: 100%;
+            border: 1px solid #eef0f5;
+        }
+        .portal-card .card-header-custom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .portal-card .card-header-custom h5 {
+            margin: 0;
+            font-size: 17px;
+            color: var(--color-heading-1);
+        }
+        .portal-card .card-header-custom .badge-count {
+            background: #eef2ff;
+            color: var(--color-primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .event-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f5;
+        }
+        .event-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .event-item .event-date {
+            min-width: 50px;
+            text-align: center;
+            background: #eef2ff;
+            border-radius: 10px;
+            padding: 8px 5px;
+            height: fit-content;
+        }
+        .event-item .event-date .month {
+            font-size: 11px;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .event-item .event-date .day {
+            font-size: 20px;
+            font-weight: 700;
+            color: #010066;
+            line-height: 1.2;
+        }
+        .event-item .event-info h6 {
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: var(--color-heading-1);
+        }
+        .event-item .event-info p {
+            font-size: 12px;
+            color: #6c757d;
+            margin: 0;
+        }
+        .event-item .event-badge {
+            font-size: 10px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 6px;
+        }
+        .event-badge.webinar { background: #e8f5e9; color: #2e7d32; }
+        .event-badge.in-person { background: #fff3e0; color: #e65100; }
+        .event-badge.committee { background: #e3f2fd; color: #1565c0; }
+        .stat-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+            border: 1px solid #eef0f5;
+            text-align: center;
+        }
+        .stat-card .icon-wrap {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-size: 22px;
+        }
+        .stat-card h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--color-heading-1);
+            margin-bottom: 4px;
+        }
+        .stat-card p {
+            font-size: 13px;
+            color: #6c757d;
+            margin: 0;
+        }
+        .resource-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+        .resource-item:hover {
+            background: #f8f9fa;
+        }
+        .resource-item .res-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .resource-item .res-info h6 {
+            font-size: 14px;
+            margin-bottom: 2px;
+            color: var(--color-heading-1);
+        }
+        .resource-item .res-info p {
+            font-size: 12px;
+            color: #6c757d;
+            margin: 0;
+        }
+        .announcement-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f5;
+        }
+        .announcement-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .announcement-item .ann-date {
+            font-size: 11px;
+            color: #6c757d;
+            margin-bottom: 4px;
+        }
+        .announcement-item h6 {
+            font-size: 14px;
+            color: var(--color-heading-1);
+            margin-bottom: 4px;
+        }
+        .announcement-item p {
+            font-size: 13px;
+            color: #6c757d;
+            margin: 0;
+            line-height: 1.5;
+        }
+        .quick-action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 20px 10px;
+            border-radius: 12px;
+            background: #f8f9fa;
+            border: 1px solid #eef0f5;
+            text-decoration: none;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        .quick-action-btn:hover {
+            background: #eef2ff;
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+        .quick-action-btn i {
+            font-size: 22px;
+            color: var(--color-primary);
+        }
+        .quick-action-btn span {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-heading-1);
+        }
+    </style>
+    <meta name="acvl-api-url" content="https://devsitepwd.tempurl.host">
+    <!-- Standalone dashboard demo: hide all site chrome so only the portal shows -->
+    <style>
+        header.header-one,        /* top navigation bar */
+        .rts-footer-area,         /* site footer */
+        .rts-copy-right-1,        /* copyright bar */
+        #side-bar,                /* mobile off-canvas menu */
+        .search-input-area,       /* off-canvas search */
+        #anywhere-home,           /* menu overlay */
+        .progress-wrap {          /* scroll-progress circle */
+            display: none !important;
+        }
+        /* Hero no longer needs to clear the (removed) sticky header */
+        .rts-breadcrumb-area { padding-top: 48px !important; }
+        body.index-one { background: #f4f5f9 !important; }
+
+        /* =====================================================
+           Mobile responsiveness for the standalone dashboard
+           ===================================================== */
+        html, body { overflow-x: hidden; max-width: 100%; }
+
+        /* Tablet and below: sidebar stacks above the content, so
+           drop the sticky positioning that was pinned to the header. */
+        @media (max-width: 991.98px) {
+            .portal-sidebar {
+                position: static !important;
+                top: auto !important;
+                margin-bottom: 24px;
+            }
+        }
+
+        /* Phones */
+        @media (max-width: 767.98px) {
+            .rts-breadcrumb-area { padding: 34px 0 26px !important; }
+            .rts-breadcrumb-area h1 { font-size: 26px !important; }
+            .rts-breadcrumb-area p { font-size: 14px !important; }
+            /* Sign Out button drops under the greeting, left-aligned */
+            .rts-breadcrumb-area .text-end {
+                text-align: left !important;
+                margin-top: 16px;
+            }
+
+            /* Tighter card padding so content breathes on small screens */
+            .portal-card,
+            .stat-card { padding: 18px !important; }
+            .stat-card h3 { font-size: 24px; }
+            .stat-card p { font-size: 12px; }
+            .quick-action-btn { padding: 16px 8px; }
+
+            /* Let card headers wrap instead of squashing the badge/link */
+            .portal-card .card-header-custom {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .portal-card .card-header-custom h5 { font-size: 16px; }
+
+            /* Committee meta chips (inline-styled) wrap on narrow screens */
+            .portal-card .card-header-custom + div [style*="display: flex"] {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Very small phones */
+        @media (max-width: 400px) {
+            .rts-breadcrumb-area h1 { font-size: 22px !important; }
+            .stat-card h3 { font-size: 22px; }
+            .quick-action-btn span { font-size: 11px; }
+            .quick-action-btn i { font-size: 20px; }
+        }
+    </style>
+</head>
+
+<body class="index-one">
+    <div class="loader-wrapper">
+        <div class="loader">
+        </div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header-one header--sticky">
+        <div class="header-top-area-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header-top-one-wrapper">
+                            <div class="left">
+                                <div class="mail">
+                                    <a href="mailto:helloacvl@gmail.com"><i class="fal fa-envelope"></i>
+                                        helloacvl@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <ul class="top-nav">
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                                <ul class="social-wrapper-one">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header-main-one-wrapper">
+                            <div class="thumbnail">
+                                <a href="index.html">
+                                    <img src="assets/images/unnamed (2).png" alt="ACVL Logo" style="max-width: 100%; height: auto; margin-left: -15px;">
+                                </a>
+                            </div>
+                            <div class="main-header">
+                                <div class="nav-area">
+                                    <ul>
+                                        <li class="main-nav has-dropdown">
+                                            <a href="#">About</a>
+                                            <ul class="submenu">
+                                                <li><a href="mission.html">Mission Statement</a></li>
+                                                <li><a href="board.html">Board/Leadership</a></li>
+                                                <li><a href="committee.html">Committee Chairs</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="main-nav has-dropdown">
+                                            <a href="#">Members</a>
+                                            <ul class="submenu">
+                                                <li><a href="member-companies.html">List of Member Companies</a></li>
+                                                <li><a href="index.html#member-benefits">Member Benefits</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="main-nav has-dropdown">
+                                            <a href="#">Sponsors</a>
+                                            <ul class="submenu">
+                                                <li><a href="sponsors.html">Sponsors</a></li>
+                                                <li><a href="advisors.html">Advisors</a></li>
+                                                <li><a href="why-sponsor.html">Why Sponsor Us</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="main-nav">
+                                            <a href="events.html">Events</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="button-area">
+                                    <a href="contact.html"
+                                        class="rts-btn btn-primary ml--20 ml_sm--5 header-one-btn quote-btn">Contact Us</a>
+                                    <button id="menu-btn" class="menu-btn menu ml--20 ml_sm--5">
+                                        <img class="menu-light" src="assets/images/icons/01.svg" alt="Menu-icon">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <div class="rts-breadcrumb-area" style="background: linear-gradient(135deg, #010066 0%, #0b4df5 100%); padding: 140px 0 40px; position: relative;">
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <span style="color: rgba(255,255,255,0.7); font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">Member Portal</span>
+                    <h1 style="color: #fff; font-size: 36px; font-weight: 700; margin-top: 8px;">Welcome back, Sarah</h1>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 16px; margin: 0;">Capital One Auto Finance &mdash; Member since 2019</p>
+                </div>
+                <div class="col-lg-4 text-end">
+                    <a href="#" class="rts-btn btn-primary" style="background: #fff; color: #010066;">
+                        <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>Sign Out
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div style="background: #f4f5f9; padding: 40px 0 80px;">
+        <div class="container">
+            <div class="row" style="gap: 0;">
+                <!-- Sidebar -->
+                <div class="col-lg-3">
+                    <div class="portal-sidebar">
+                        <div class="member-info">
+                            <div class="avatar">SM</div>
+                            <h5>Sarah Mitchell</h5>
+                            <span>Capital One Auto Finance</span>
+                        </div>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">
+                                    <i class="fas fa-th-large"></i> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-calendar-alt"></i> Events & Webinars
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-folder-open"></i> Resources
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-users"></i> Committees
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-file-alt"></i> Documents
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-address-book"></i> Member Directory
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-cog"></i> Account Settings
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="col-lg-9">
+                    <!-- Stats Row -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-lg-3 col-md-6 col-6">
+                            <div class="stat-card">
+                                <div class="icon-wrap" style="background: #eef2ff; color: var(--color-primary);">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <h3>4</h3>
+                                <p>Upcoming Events</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-6">
+                            <div class="stat-card">
+                                <div class="icon-wrap" style="background: #e8f5e9; color: #2e7d32;">
+                                    <i class="fas fa-video"></i>
+                                </div>
+                                <h3>3</h3>
+                                <p>Webinars This Quarter</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-6">
+                            <div class="stat-card">
+                                <div class="icon-wrap" style="background: #fff3e0; color: #e65100;">
+                                    <i class="fas fa-users-cog"></i>
+                                </div>
+                                <h3>2</h3>
+                                <p>Your Committees</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-6">
+                            <div class="stat-card">
+                                <div class="icon-wrap" style="background: #fce4ec; color: #c62828;">
+                                    <i class="fas fa-file-download"></i>
+                                </div>
+                                <h3>12</h3>
+                                <p>Resources Available</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-12">
+                            <div class="portal-card">
+                                <div class="card-header-custom">
+                                    <h5>Quick Actions</h5>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-lg-2 col-md-4 col-6">
+                                        <a href="#" class="quick-action-btn">
+                                            <i class="fas fa-user-edit"></i>
+                                            <span>Update Profile</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6">
+                                        <a href="#" class="quick-action-btn">
+                                            <i class="fas fa-ticket-alt"></i>
+                                            <span>Register Event</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6">
+                                        <a href="#" class="quick-action-btn">
+                                            <i class="fas fa-play-circle"></i>
+                                            <span>Watch Replay</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6">
+                                        <a href="#" class="quick-action-btn">
+                                            <i class="fas fa-comments"></i>
+                                            <span>Discussion Board</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6">
+                                        <a href="#" class="quick-action-btn">
+                                            <i class="fas fa-question-circle"></i>
+                                            <span>Get Support</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6">
+                                        <a href="#" class="quick-action-btn">
+                                            <i class="fas fa-id-badge"></i>
+                                            <span>Member ID</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-4 mb-4">
+                        <!-- Upcoming Events -->
+                        <div class="col-lg-7">
+                            <div class="portal-card">
+                                <div class="card-header-custom">
+                                    <h5><i class="fas fa-calendar-alt" style="color: var(--color-primary); margin-right: 8px;"></i>Upcoming Events</h5>
+                                    <span class="badge-count">4 upcoming</span>
+                                </div>
+
+                                <div class="event-item">
+                                    <div class="event-date">
+                                        <div class="month">Apr</div>
+                                        <div class="day">23</div>
+                                    </div>
+                                    <div class="event-info">
+                                        <h6>Spring Tax Conference</h6>
+                                        <p><i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i>Ryan, Plano, TX</p>
+                                        <p><i class="fas fa-clock" style="margin-right: 5px;"></i>April 23-24, 2026 &mdash; 9:00 AM CT</p>
+                                        <span class="event-badge in-person">In-Person</span>
+                                    </div>
+                                </div>
+
+                                <div class="event-item">
+                                    <div class="event-date">
+                                        <div class="month">May</div>
+                                        <div class="day">14</div>
+                                    </div>
+                                    <div class="event-info">
+                                        <h6>Residual & Operations Webinar</h6>
+                                        <p><i class="fas fa-video" style="margin-right: 5px;"></i>Virtual &mdash; Zoom</p>
+                                        <p><i class="fas fa-clock" style="margin-right: 5px;"></i>12:00 PM - 1:30 PM ET</p>
+                                        <span class="event-badge webinar">Webinar</span>
+                                    </div>
+                                </div>
+
+                                <div class="event-item">
+                                    <div class="event-date">
+                                        <div class="month">Jun</div>
+                                        <div class="day">11</div>
+                                    </div>
+                                    <div class="event-info">
+                                        <h6>Monthly Tax & Legal Committee Meeting</h6>
+                                        <p><i class="fas fa-video" style="margin-right: 5px;"></i>Virtual &mdash; Microsoft Teams</p>
+                                        <p><i class="fas fa-clock" style="margin-right: 5px;"></i>2:00 PM - 3:00 PM ET</p>
+                                        <span class="event-badge committee">Committee</span>
+                                    </div>
+                                </div>
+
+                                <div class="event-item">
+                                    <div class="event-date">
+                                        <div class="month">Oct</div>
+                                        <div class="day">11</div>
+                                    </div>
+                                    <div class="event-info">
+                                        <h6>ACVL Annual Conference 2026</h6>
+                                        <p><i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i>Renaissance Hotel, Asheville, NC</p>
+                                        <p><i class="fas fa-clock" style="margin-right: 5px;"></i>October 11-13, 2026</p>
+                                        <span class="event-badge in-person">In-Person</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Announcements -->
+                        <div class="col-lg-5">
+                            <div class="portal-card">
+                                <div class="card-header-custom">
+                                    <h5><i class="fas fa-bullhorn" style="color: var(--color-primary); margin-right: 8px;"></i>Announcements</h5>
+                                </div>
+
+                                <div class="announcement-item">
+                                    <div class="ann-date">Feb 28, 2026</div>
+                                    <h6>Spring Tax Conference Registration Open</h6>
+                                    <p>Registration is now open for the Spring Tax Conference in Plano, TX. Secure your spot early.</p>
+                                </div>
+
+                                <div class="announcement-item">
+                                    <div class="ann-date">Feb 20, 2026</div>
+                                    <h6>New Residual Value Report Published</h6>
+                                    <p>The Q1 2026 Residual Value Trends report is now available in the Resources section.</p>
+                                </div>
+
+                                <div class="announcement-item">
+                                    <div class="ann-date">Feb 10, 2026</div>
+                                    <h6>Board Election Nominations</h6>
+                                    <p>Nominations for two open board seats are due by March 15th. See Member Resources for details.</p>
+                                </div>
+
+                                <div class="announcement-item">
+                                    <div class="ann-date">Jan 30, 2026</div>
+                                    <h6>Annual Conference Venue Announced</h6>
+                                    <p>The 2026 Annual Conference will be held at the Renaissance Hotel in Asheville, NC.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-4 mb-4">
+                        <!-- Member Resources -->
+                        <div class="col-lg-6">
+                            <div class="portal-card">
+                                <div class="card-header-custom">
+                                    <h5><i class="fas fa-folder-open" style="color: var(--color-primary); margin-right: 8px;"></i>Member Resources</h5>
+                                    <a href="#" style="font-size: 13px; color: var(--color-primary); text-decoration: none;">View All</a>
+                                </div>
+
+                                <a href="#" class="resource-item">
+                                    <div class="res-icon" style="background: #fff3e0; color: #e65100;">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div class="res-info">
+                                        <h6>Q1 2026 Residual Value Trends</h6>
+                                        <p>Published Feb 20, 2026 &mdash; PDF, 2.4 MB</p>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="resource-item">
+                                    <div class="res-icon" style="background: #e8f5e9; color: #2e7d32;">
+                                        <i class="fas fa-file-excel"></i>
+                                    </div>
+                                    <div class="res-info">
+                                        <h6>2025 Industry Benchmarking Data</h6>
+                                        <p>Published Jan 15, 2026 &mdash; XLSX, 1.1 MB</p>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="resource-item">
+                                    <div class="res-icon" style="background: #eef2ff; color: var(--color-primary);">
+                                        <i class="fas fa-file-powerpoint"></i>
+                                    </div>
+                                    <div class="res-info">
+                                        <h6>Annual Conference 2025 Presentations</h6>
+                                        <p>Published Nov 5, 2025 &mdash; ZIP, 45 MB</p>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="resource-item">
+                                    <div class="res-icon" style="background: #fce4ec; color: #c62828;">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div class="res-info">
+                                        <h6>Regulatory Update: EV Leasing Guidelines</h6>
+                                        <p>Published Dec 12, 2025 &mdash; PDF, 890 KB</p>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="resource-item">
+                                    <div class="res-icon" style="background: #e3f2fd; color: #1565c0;">
+                                        <i class="fas fa-play-circle"></i>
+                                    </div>
+                                    <div class="res-info">
+                                        <h6>Used Vehicle Market Outlook Webinar Recording</h6>
+                                        <p>Recorded Jan 22, 2026 &mdash; 58 min</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Your Committees -->
+                        <div class="col-lg-6">
+                            <div class="portal-card">
+                                <div class="card-header-custom">
+                                    <h5><i class="fas fa-users-cog" style="color: var(--color-primary); margin-right: 8px;"></i>Your Committees</h5>
+                                </div>
+
+                                <div style="background: #f8f9fa; border-radius: 12px; padding: 20px; margin-bottom: 15px; border-left: 4px solid var(--color-primary);">
+                                    <h6 style="margin-bottom: 8px; color: var(--color-heading-1);">Tax & Legal Committee</h6>
+                                    <p style="font-size: 13px; color: #6c757d; margin-bottom: 10px;">Monthly meetings on the 2nd Wednesday. Covers federal and state tax policy, regulatory compliance, and legal developments.</p>
+                                    <div style="display: flex; gap: 15px; font-size: 12px; color: #6c757d;">
+                                        <span><i class="fas fa-user-friends" style="margin-right: 4px; color: var(--color-primary);"></i>24 members</span>
+                                        <span><i class="fas fa-user-tie" style="margin-right: 4px; color: var(--color-primary);"></i>Chair: Robert Chen</span>
+                                    </div>
+                                    <a href="#" style="display: inline-block; margin-top: 10px; font-size: 13px; color: var(--color-primary); text-decoration: none; font-weight: 600;">
+                                        Next meeting: Jun 11 <i class="fas fa-arrow-right" style="margin-left: 4px; font-size: 11px;"></i>
+                                    </a>
+                                </div>
+
+                                <div style="background: #f8f9fa; border-radius: 12px; padding: 20px; border-left: 4px solid #e65100;">
+                                    <h6 style="margin-bottom: 8px; color: var(--color-heading-1);">Residual Risk & Operations Committee</h6>
+                                    <p style="font-size: 13px; color: #6c757d; margin-bottom: 10px;">Quarterly webinars and ad-hoc sessions. Focuses on residual value trends, vehicle remarketing, and operational best practices.</p>
+                                    <div style="display: flex; gap: 15px; font-size: 12px; color: #6c757d;">
+                                        <span><i class="fas fa-user-friends" style="margin-right: 4px; color: #e65100;"></i>18 members</span>
+                                        <span><i class="fas fa-user-tie" style="margin-right: 4px; color: #e65100;"></i>Chair: Lisa Park</span>
+                                    </div>
+                                    <a href="#" style="display: inline-block; margin-top: 10px; font-size: 13px; color: #e65100; text-decoration: none; font-weight: 600;">
+                                        Next webinar: May 14 <i class="fas fa-arrow-right" style="margin-left: 4px; font-size: 11px;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Webinar Recordings -->
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <div class="portal-card">
+                                <div class="card-header-custom">
+                                    <h5><i class="fas fa-play-circle" style="color: var(--color-primary); margin-right: 8px;"></i>Recent Webinar Recordings</h5>
+                                    <a href="#" style="font-size: 13px; color: var(--color-primary); text-decoration: none;">View Library</a>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-lg-4">
+                                        <div style="background: #f8f9fa; border-radius: 12px; padding: 20px;">
+                                            <div style="background: #010066; border-radius: 8px; padding: 30px; text-align: center; margin-bottom: 15px;">
+                                                <i class="fas fa-play-circle" style="font-size: 36px; color: rgba(255,255,255,0.8);"></i>
+                                            </div>
+                                            <h6 style="font-size: 14px; margin-bottom: 5px;">Used Vehicle Market Outlook</h6>
+                                            <p style="font-size: 12px; color: #6c757d; margin: 0;">Jan 22, 2026 &mdash; 58 min</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div style="background: #f8f9fa; border-radius: 12px; padding: 20px;">
+                                            <div style="background: #010066; border-radius: 8px; padding: 30px; text-align: center; margin-bottom: 15px;">
+                                                <i class="fas fa-play-circle" style="font-size: 36px; color: rgba(255,255,255,0.8);"></i>
+                                            </div>
+                                            <h6 style="font-size: 14px; margin-bottom: 5px;">EV Leasing Regulatory Update</h6>
+                                            <p style="font-size: 12px; color: #6c757d; margin: 0;">Dec 10, 2025 &mdash; 45 min</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div style="background: #f8f9fa; border-radius: 12px; padding: 20px;">
+                                            <div style="background: #010066; border-radius: 8px; padding: 30px; text-align: center; margin-bottom: 15px;">
+                                                <i class="fas fa-play-circle" style="font-size: 36px; color: rgba(255,255,255,0.8);"></i>
+                                            </div>
+                                            <h6 style="font-size: 14px; margin-bottom: 5px;">Year-End Tax Planning Strategies</h6>
+                                            <p style="font-size: 12px; color: #6c757d; margin: 0;">Nov 18, 2025 &mdash; 62 min</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="rts-footer-area pt--100 pb--100 pt_sm--50 pb_sm--40 footer-two footer-bg-two">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="footer-two-single-wized left">
+                        <h3 class="title animated fadeIn">
+                            <span>Ready To</span> <br>
+                            Work With Us?
+                        </h3>
+                        <p class="disc">
+                            Join the leading trade association for consumer vehicle lessors.
+                        </p>
+                        <a class="rts-btn btn-primary" href="index.html#contact">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 mt_sm--50">
+                    <div class="footer-two-single-wized two">
+                        <div class="wized-title-area">
+                            <h5 class="wized-title">Quick Links</h5>
+                            <img src="assets/images/footer/01.png" alt="ACVL_Footer">
+                        </div>
+                        <div class="wized-2-body">
+                            <ul>
+                                <li><a href="index.html"><i class="fal fa-chevron-double-right"></i>Home</a></li>
+                                <li><a href="mission.html"><i class="fal fa-chevron-double-right"></i>Mission</a></li>
+                                <li><a href="board.html"><i class="fal fa-chevron-double-right"></i>Board of Directors</a></li>
+                                <li><a href="committee.html"><i class="fal fa-chevron-double-right"></i>Committee Chairs</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12 mt_sm--30 mt_md--30">
+                    <div class="footer-two-single-wized">
+                        <div class="wized-title-area">
+                            <h5 class="wized-title">Contact Us</h5>
+                            <img src="assets/images/footer/01.png" alt="ACVL_Footer">
+                        </div>
+                        <div class="wized-2-body">
+                            <div class="contact-info-1">
+                                <div class="icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="disc">
+                                    <span>Email Us</span>
+                                    <a href="mailto:HelloACVL@gmail.com">HelloACVL@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-info-1">
+                                <div class="icon">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <div class="disc">
+                                    <span>Website</span>
+                                    <a href="#">www.acvlonline.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="rts-copy-right-1 ptb--10">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="copyright-h-2-wrapper">
+                        <p class="disc">
+                            ACVL - Copyright
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script>. All rights reserved.
+                        </p>
+                        <div class="right">
+                            <ul>
+                                <li><a href="index.html#contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="side-bar" class="side-bar header-two">
+        <button class="close-icon-menu"><i class="far fa-times"></i></button>
+        <div class="rts-sidebar-menu-desktop">
+            <div class="body d-none d-xl-block">
+                <p class="disc">
+                    The Association of Consumer Vehicle Lessors is the trade association of major retail automobile lessors promoting high ethical standards and public confidence in consumer vehicle leasing.
+                </p>
+                <div class="get-in-touch">
+                    <div class="h6 title">Get In Touch</div>
+                    <div class="wrapper">
+                        <div class="single">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:HelloACVL@gmail.com">HelloACVL@gmail.com</a>
+                        </div>
+                        <div class="single">
+                            <i class="fas fa-globe"></i>
+                            <a href="#">www.acvlonline.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu d-block d-xl-none">
+            <nav class="nav-main mainmenu-nav mt--30">
+                <ul class="mainmenu metismenu" id="mobile-menu-active">
+                    <li class="has-droupdown">
+                        <a class="main" href="#">About</a>
+                        <ul class="submenu mm-collapse">
+                            <li><a href="mission.html">Mission Statement</a></li>
+                            <li><a href="board.html">Board/Leadership</a></li>
+                            <li><a href="committee.html">Committee Chairs</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-droupdown">
+                        <a class="main" href="#">Members</a>
+                        <ul class="submenu mm-collapse">
+                            <li><a href="member-companies.html">List of Member Companies</a></li>
+                            <li><a href="index.html#member-benefits">Member Benefits</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-droupdown">
+                        <a class="main" href="#">Sponsors</a>
+                        <ul class="submenu mm-collapse">
+                            <li><a href="sponsors.html">Sponsors</a></li>
+                            <li><a href="advisors.html">Advisors</a></li>
+                            <li><a href="why-sponsor.html">Why Sponsor Us</a></li>
+                        </ul>
+                    </li>
+                    <li class="main-nav">
+                        <a class="main" href="events.html">Events</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="social-wrapper-one">
+                <ul>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- offcanvase search -->
+    <div class="search-input-area">
+        <div class="container">
+            <div class="search-input-inner">
+                <div class="input-div">
+                    <input class="search-input autocomplete" type="text" placeholder="Search by keyword or #">
+                    <button><i class="far fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+        <div id="close" class="search-close-icon"><i class="far fa-times"></i></div>
+    </div>
+    <div id="anywhere-home" class="">
+    </div>
+    <!-- progress area start -->
+    <div class="progress-wrap">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+                style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
+            </path>
+        </svg>
+    </div>
+    <!-- progress area end -->
+
+    <script src="assets/js/plugins/jquery.js"></script>
+    <script src="assets/js/plugins/odometer.js"></script>
+    <script src="assets/js/plugins/jquery-appear.js"></script>
+    <script src="assets/js/plugins/gsap.js"></script>
+    <script src="assets/js/plugins/split-text.js"></script>
+    <script src="assets/js/plugins/scroll-trigger.js"></script>
+    <script src="assets/js/plugins/smooth-scroll.js"></script>
+    <script src="assets/js/plugins/metismenu.js"></script>
+    <script src="https://html.themewant.com/golfy/assets/js/plugins/magnific-popup.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/plugins/swiper.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="acvl-headless-cms/frontend/acvl-content-loader.js" defer></script>
+</body>
+
+</html>
