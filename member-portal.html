@@ -337,10 +337,124 @@
             .quick-action-btn span { font-size: 11px; }
             .quick-action-btn i { font-size: 20px; }
         }
+
+        /* =====================================================
+           Password gate — hide the dashboard until unlocked.
+           NOTE: this is a client-side gate only. It deters casual
+           access but is NOT secure (the check runs in the browser).
+           ===================================================== */
+        body:not(.portal-unlocked) .rts-breadcrumb-area,
+        body:not(.portal-unlocked) .rts-breadcrumb-area + div {
+            display: none !important;
+        }
+        body.portal-unlocked #portal-gate { display: none !important; }
+        #portal-gate {
+            position: fixed;
+            inset: 0;
+            z-index: 999999;
+            background: linear-gradient(135deg, #010066 0%, #0b4df5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        #portal-gate .gate-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px 34px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
+        #portal-gate .gate-icon {
+            width: 64px; height: 64px;
+            border-radius: 50%;
+            background: #eef2ff;
+            color: #0b4df5;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 26px;
+            margin: 0 auto 18px;
+        }
+        #portal-gate h2 { font-size: 22px; color: #010066; margin-bottom: 6px; }
+        #portal-gate p { font-size: 14px; color: #6c757d; margin-bottom: 22px; }
+        #portal-gate input[type="password"] {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1px solid #d5d8e0;
+            border-radius: 10px;
+            font-size: 15px;
+            margin-bottom: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        #portal-gate input[type="password"]:focus { border-color: #0b4df5; }
+        #portal-gate button {
+            width: 100%;
+            padding: 13px 16px;
+            border: none;
+            border-radius: 10px;
+            background: #010066;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        #portal-gate button:hover { background: #0b4df5; }
+        #portal-gate .gate-error {
+            display: none;
+            color: #c62828;
+            font-size: 13px;
+            margin-top: 14px;
+        }
+        #portal-gate.has-error .gate-error { display: block; }
+        #portal-gate.has-error input[type="password"] { border-color: #c62828; }
     </style>
 </head>
 
 <body class="index-one">
+    <!-- Password gate (client-side only — see note in <head>) -->
+    <div id="portal-gate">
+        <form class="gate-card" id="portal-gate-form" autocomplete="off">
+            <div class="gate-icon"><i class="fas fa-lock"></i></div>
+            <h2>Member Portal</h2>
+            <p>Enter the access password to continue.</p>
+            <input type="password" id="portal-gate-input" placeholder="Password" aria-label="Password" autofocus>
+            <button type="submit">Unlock</button>
+            <div class="gate-error" id="portal-gate-error">Incorrect password. Please try again.</div>
+        </form>
+    </div>
+    <script>
+        (function () {
+            var PASSWORD = 'ACLV2026';
+            var KEY = 'acvl_portal_unlocked';
+            function unlock() {
+                document.body.classList.add('portal-unlocked');
+                try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+            }
+            // Stay unlocked for the rest of this browser session.
+            try { if (sessionStorage.getItem(KEY) === '1') unlock(); } catch (e) {}
+
+            document.addEventListener('DOMContentLoaded', function () {
+                var form  = document.getElementById('portal-gate-form');
+                var input = document.getElementById('portal-gate-input');
+                var gate  = document.getElementById('portal-gate');
+                if (!form) return;
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    if (input.value === PASSWORD) {
+                        gate.classList.remove('has-error');
+                        unlock();
+                    } else {
+                        gate.classList.add('has-error');
+                        input.value = '';
+                        input.focus();
+                    }
+                });
+            });
+        })();
+    </script>
     <div class="loader-wrapper">
         <div class="loader">
         </div>
