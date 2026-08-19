@@ -22,7 +22,7 @@
             border-radius: 15px;
             padding: 30px 20px;
             position: sticky;
-            top: 120px;
+            top: 24px;
         }
         .portal-sidebar .member-info {
             text-align: center;
@@ -289,14 +289,52 @@
            ===================================================== */
         html, body { overflow-x: hidden; max-width: 100%; }
 
-        /* Tablet and below: sidebar stacks above the content, so
-           drop the sticky positioning that was pinned to the header. */
+        /* Tablet and below: turn the left panel into a fixed, app-style
+           bottom navigation bar (icons + short labels, scrolls if needed). */
         @media (max-width: 991.98px) {
             .portal-sidebar {
-                position: static !important;
+                position: fixed;
+                left: 0; right: 0; bottom: 0;
                 top: auto !important;
-                margin-bottom: 24px;
+                z-index: 1000;
+                background: #010066;
+                border-radius: 0;
+                padding: 0;
+                margin: 0;
+                box-shadow: 0 -4px 20px rgba(0,0,0,0.25);
             }
+            /* Member avatar/name doesn't belong in a bottom bar */
+            .portal-sidebar .member-info { display: none; }
+
+            .portal-sidebar .nav.flex-column {
+                flex-direction: row !important;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;               /* Firefox */
+            }
+            .portal-sidebar .nav.flex-column::-webkit-scrollbar { display: none; }
+
+            .portal-sidebar .nav-item { margin: 0; flex: 1 0 auto; }
+            .portal-sidebar .nav-link {
+                flex-direction: column;
+                gap: 4px;
+                justify-content: center;
+                text-align: center;
+                white-space: nowrap;
+                padding: 9px 12px;
+                border-radius: 0;
+                font-size: 10px;
+                line-height: 1.2;
+                min-width: 66px;
+            }
+            .portal-sidebar .nav-link i { width: auto; font-size: 18px; }
+            .portal-sidebar .nav-link.active {
+                background: rgba(255,255,255,0.12);
+                color: #fff;
+            }
+            /* Reserve space so the fixed bar never covers the last content */
+            #portal-main { padding-bottom: 92px !important; }
         }
 
         /* Phones */
@@ -343,8 +381,7 @@
            NOTE: this is a client-side gate only. It deters casual
            access but is NOT secure (the check runs in the browser).
            ===================================================== */
-        body:not(.portal-unlocked) .rts-breadcrumb-area,
-        body:not(.portal-unlocked) .rts-breadcrumb-area + div {
+        body:not(.portal-unlocked) #portal-main {
             display: none !important;
         }
         body.portal-unlocked #portal-gate { display: none !important; }
@@ -543,26 +580,8 @@
         </div>
     </header>
 
-    <!-- Hero Banner -->
-    <div class="rts-breadcrumb-area" style="background: linear-gradient(135deg, #010066 0%, #0b4df5 100%); padding: 140px 0 40px; position: relative;">
-        <div class="container" style="position: relative; z-index: 1;">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <span style="color: rgba(255,255,255,0.7); font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">Member Portal</span>
-                    <h1 style="color: #fff; font-size: 36px; font-weight: 700; margin-top: 8px;">Welcome back, Sarah</h1>
-                    <p style="color: rgba(255,255,255,0.8); font-size: 16px; margin: 0;">Capital One Auto Finance &mdash; Member since 2019</p>
-                </div>
-                <div class="col-lg-4 text-end">
-                    <a href="#" class="rts-btn btn-primary" style="background: #fff; color: #010066;">
-                        <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>Sign Out
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Dashboard Content -->
-    <div style="background: #f4f5f9; padding: 40px 0 80px;">
+    <div id="portal-main" style="background: #f4f5f9; padding: 40px 0 80px;">
         <div class="container">
             <div class="row" style="gap: 0;">
                 <!-- Sidebar -->
@@ -607,6 +626,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
                                     <i class="fas fa-cog"></i> Account Settings
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-sign-out-alt"></i> Sign Out
                                 </a>
                             </li>
                         </ul>
