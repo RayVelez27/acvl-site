@@ -308,33 +308,55 @@
            Deliberately separate from the site's home-page navbar.
            ===================================================== */
         @media (max-width: 991.98px) {
-            /* Top app bar */
+            /* Top app bar — premium: title far-left, hamburger far-right */
             #portal-topbar {
                 display: flex;
                 align-items: center;
-                gap: 14px;
+                justify-content: space-between;
                 position: fixed;
                 top: 0; left: 0; right: 0;
-                height: 56px;
+                height: 64px;
                 z-index: 1001;
-                background: #010066;
-                padding: 0 14px;
-                box-shadow: 0 2px 12px rgba(0,0,0,0.22);
-            }
-            #portal-nav-toggle {
-                background: transparent;
-                border: none;
-                color: #fff;
-                font-size: 20px;
-                line-height: 1;
-                padding: 6px 8px;
-                cursor: pointer;
+                background: linear-gradient(120deg, #010066 0%, #0a3fd6 55%, #0b4df5 100%);
+                padding: 0 18px;
+                box-shadow: 0 6px 22px rgba(1, 0, 102, 0.30);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.10);
             }
             #portal-topbar .portal-topbar-title {
+                display: flex;
+                align-items: center;
+                gap: 11px;
                 color: #fff;
-                font-size: 16px;
-                font-weight: 600;
+                font-size: 17px;
+                font-weight: 700;
+                letter-spacing: 0.2px;
             }
+            /* Slim accent mark before the title for a branded feel */
+            #portal-topbar .portal-topbar-title::before {
+                content: "";
+                width: 6px;
+                height: 24px;
+                border-radius: 4px;
+                background: linear-gradient(#ffffff, rgba(255,255,255,0.65));
+                box-shadow: 0 0 10px rgba(255,255,255,0.35);
+            }
+            #portal-nav-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 42px;
+                height: 42px;
+                border-radius: 11px;
+                background: rgba(255, 255, 255, 0.12);
+                border: 1px solid rgba(255, 255, 255, 0.20);
+                color: #fff;
+                font-size: 18px;
+                line-height: 1;
+                cursor: pointer;
+                transition: background 0.2s ease, transform 0.08s ease;
+            }
+            #portal-nav-toggle:hover { background: rgba(255, 255, 255, 0.22); }
+            #portal-nav-toggle:active { transform: scale(0.93); }
 
             /* Left panel becomes an off-canvas drawer */
             .portal-sidebar {
@@ -380,7 +402,7 @@
 
             /* Content clears the fixed top bar; tighter side padding */
             #portal-main {
-                padding-top: 56px !important;
+                padding-top: 64px !important;
                 padding-bottom: 40px !important;
             }
             #portal-main > .container {
@@ -634,8 +656,8 @@
 
     <!-- Mobile dashboard nav: top app bar + backdrop (separate from site nav) -->
     <div id="portal-topbar">
-        <button id="portal-nav-toggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
         <span class="portal-topbar-title">Member Portal</span>
+        <button id="portal-nav-toggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
     </div>
     <div id="portal-nav-backdrop"></div>
     <script>
