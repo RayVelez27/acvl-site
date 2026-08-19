@@ -1,0 +1,36 @@
+# Netlify configuration — ACVL static site
+# Static HTML lives at the repo root, so there is no build step:
+# Netlify just publishes the root directory as-is.
+
+[build]
+  publish = "."
+  command = ""
+
+# ---------------------------------------------------------------------------
+# Security headers on every response
+# ---------------------------------------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# ---------------------------------------------------------------------------
+# Caching
+# Fonts never change once shipped -> cache hard (immutable).
+# Images change rarely -> cache a week.
+# NOTE: HTML/CSS/JS are intentionally left on Netlify's default (ETag +
+# revalidate) because their filenames are NOT fingerprinted; hard-caching
+# them would serve stale pages/styles after an update.
+# ---------------------------------------------------------------------------
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
